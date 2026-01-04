@@ -11,6 +11,7 @@ class tr.flashocal.debug.Console {
     private static var _instance:Console;
     private var _view:MovieClip;
     private var _txt:TextField;
+    private var _inTxt:TextField;
     private var _lines:Array;
     private var _visible:Boolean;
     
@@ -63,29 +64,25 @@ class tr.flashocal.debug.Console {
         
         // Input field for commands
         _view.createTextField("in_txt", 2, 5, 205, Stage.width - 10, 20);
-        var inTxt:TextField = _view.in_txt;
-        inTxt.type = "input";
-        inTxt.border = true;
-        inTxt.borderColor = 0x666666;
-        inTxt.background = true;
-        inTxt.backgroundColor = 0x000000;
-        inTxt.textColor = 0x00FF00;
-        inTxt.setNewTextFormat(fmt);
+        _inTxt = _view.in_txt;
+        _inTxt.type = "input";
+        _inTxt.border = true;
+        _inTxt.borderColor = 0x666666;
+        _inTxt.background = true;
+        _inTxt.backgroundColor = 0x000000;
+        _inTxt.textColor = 0x00FF00;
+        _inTxt.setNewTextFormat(fmt);
         
         var scope:Console = this;
-        inTxt.onChanged = function() {
-            // handle input if needed
-        };
-        // Detect Enter key? standard textfield doesn't dispatch simple enter event easily without listener.
-        // We will assume a key listener is attached or user logic calls processCommand.
-        // Simplified: Hook listener manually
+        // Key listener for Enter
         var kL:Object = new Object();
         kL.onKeyDown = function() {
-            if (Key.getCode() == 13 && Selection.getFocus() == user_path_to_txt) {
-                 // But scope issue. Better expose a public process function or use a button.
+            if (Key.getCode() == 13 && Selection.getFocus() == String(scope._inTxt)) {
+                 scope.runCommand(scope._inTxt.text);
+                 scope._inTxt.text = "";
             }
         };
-        // Just providing logic: developers call parsing manually or we assume Focus.
+        Key.addListener(kL);
     }
     
     // Command Logic

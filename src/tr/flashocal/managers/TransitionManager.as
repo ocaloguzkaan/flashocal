@@ -71,7 +71,7 @@ class tr.flashocal.managers.TransitionManager {
         var scope:TransitionManager = this;
         _overlay.onEnterFrame = function() {
             scope._progress -= 0.05;
-            if (scope._progress <= 0) {
+            if (scope._overlay && scope._progress <= 0) {
                  delete scope._overlay.onEnterFrame;
                  scope._overlay._visible = false;
             }

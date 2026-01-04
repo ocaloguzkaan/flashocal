@@ -62,7 +62,11 @@ class tr.flashocal.core.PrefabFactory {
     
     private function drawPlaceholder(mc:MovieClip, color:Number):Void {
         mc.beginFill(color);
-        mc.drawRect(-10, -10, 20, 20);
+        mc.moveTo(-10, -10);
+        mc.lineTo(10, -10);
+        mc.lineTo(10, 10);
+        mc.lineTo(-10, 10);
+        mc.lineTo(-10, -10);
         mc.endFill();
     }
 }

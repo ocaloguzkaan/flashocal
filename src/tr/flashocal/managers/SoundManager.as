@@ -35,7 +35,7 @@ class tr.flashocal.managers.SoundManager {
         snd.start();
         
         snd.onSoundComplete = function() {
-            this.removeMovieClip();
+            sndClip.removeMovieClip();
         };
     }
     

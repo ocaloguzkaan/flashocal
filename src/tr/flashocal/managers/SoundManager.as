@@ -53,7 +53,7 @@ class tr.flashocal.managers.SoundManager {
         _musicClip = _root.createEmptyMovieClip("music_stream_mc", _root.getNextHighestDepth());
         _musicSound = new Sound(_musicClip);
         _musicSound.attachSound(linkageID);
-        _musicSound.setVolume(60); 
+        _musicSound.setVolume(100); 
         _musicSound.start(0, 9999); // Loop 9999 times
     }
     

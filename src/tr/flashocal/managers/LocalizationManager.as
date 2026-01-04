@@ -4,9 +4,6 @@ class tr.flashocal.managers.LocalizationManager {
 
     private static var _instance:LocalizationManager;
     private var _dictionary:Object;
-    private var _currentLanguage:String;
-
-    private var _dictionary:Object;
     private var _fonts:Object; // Map langCode -> FontName
     private var _currentLanguage:String;
 
@@ -16,6 +13,15 @@ class tr.flashocal.managers.LocalizationManager {
             // defaults
         _fonts["en"] = "Arial"; 
         _fonts["tr"] = "Arial";
+        _fonts["es"] = "Arial";
+        _fonts["fr"] = "Arial";
+        _fonts["de"] = "Arial";
+        _fonts["it"] = "Arial";
+        _fonts["pt"] = "Arial";
+        _fonts["ru"] = "Arial";
+        _fonts["ja"] = "_sans";
+        _fonts["zh"] = "_sans";
+        _fonts["ko"] = "_sans";
         
         _currentLanguage = "en"; // default
     }

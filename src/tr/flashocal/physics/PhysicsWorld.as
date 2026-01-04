@@ -77,12 +77,16 @@ class tr.flashocal.physics.PhysicsWorld {
             
             if (overlapX < overlapY) {
                 // Resolve X
+                // Distribution of correction
+                var m1:Number = (b1.isStatic) ? 0 : ((b2.isStatic) ? 1 : 0.5);
+                var m2:Number = (b2.isStatic) ? 0 : ((b1.isStatic) ? 1 : 0.5);
+                
                 if (dx > 0) {
-                     if (!b1.isStatic) b1.x += overlapX * 0.5;
-                     if (!b2.isStatic) b2.x -= overlapX * 0.5;
+                     b1.x += overlapX * m1;
+                     b2.x -= overlapX * m2;
                 } else {
-                     if (!b1.isStatic) b1.x -= overlapX * 0.5;
-                     if (!b2.isStatic) b2.x += overlapX * 0.5;
+                     b1.x -= overlapX * m1;
+                     b2.x += overlapX * m2;
                 }
                 
                 // Bounce X
@@ -92,12 +96,15 @@ class tr.flashocal.physics.PhysicsWorld {
                
             } else {
                 // Resolve Y
+                var m1:Number = (b1.isStatic) ? 0 : ((b2.isStatic) ? 1 : 0.5);
+                var m2:Number = (b2.isStatic) ? 0 : ((b1.isStatic) ? 1 : 0.5);
+
                 if (dy > 0) {
-                     if (!b1.isStatic) b1.y += overlapY * 0.5;
-                     if (!b2.isStatic) b2.y -= overlapY * 0.5;
+                    b1.y += overlapY * m1;
+                    b2.y -= overlapY * m2;
                 } else {
-                     if (!b1.isStatic) b1.y -= overlapY * 0.5;
-                     if (!b2.isStatic) b2.y += overlapY * 0.5;
+                    b1.y -= overlapY * m1;
+                    b2.y += overlapY * m2;
                 }
                 
                // Bounce Y

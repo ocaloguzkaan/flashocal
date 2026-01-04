@@ -4,6 +4,12 @@
 
 It separates logic from the view (MovieClips), promotes strict typing, and includes a comprehensive suite of managers to handle common game dev tasks like Physics, Localization, and Transitions.
 
+<div align="center">
+
+[**Features**](#-features) • [**Installation**](#-installation) • [**Usage**](#-usage) • [**Directory Structure**](#-directory-structure)
+
+</div>
+
 ---
 
 ## 🚀 Features

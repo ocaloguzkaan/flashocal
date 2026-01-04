@@ -42,4 +42,26 @@ class tr.flashocal.managers.SoundManager {
     public function setGlobalVolume(vol:Number):Void {
         _globalSound.setVolume(vol);
     }
+    
+    // --- Music Streaming ---
+    private var _musicSound:Sound;
+    private var _musicClip:MovieClip;
+    
+    public function playMusic(linkageID:String):Void {
+        stopMusic();
+        
+        _musicClip = _root.createEmptyMovieClip("music_stream_mc", _root.getNextHighestDepth());
+        _musicSound = new Sound(_musicClip);
+        _musicSound.attachSound(linkageID);
+        _musicSound.setVolume(60); 
+        _musicSound.start(0, 9999); // Loop 9999 times
+    }
+    
+    public function stopMusic():Void {
+        if (_musicSound != null) {
+            _musicSound.stop();
+            _musicClip.removeMovieClip();
+            _musicSound = null;
+        }
+    }
 }
